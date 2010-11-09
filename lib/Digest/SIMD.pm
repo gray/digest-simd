@@ -149,7 +149,7 @@ Returns the algorithm used by the object.
 
 L<Digest>
 
-L<http://www.sdl.hitachi.co.jp/crypto/simd/>
+L<http://www.di.ens.fr/~leurent/simd.html>
 L<http://en.wikimedia.org/wikipedia/en/wiki/SHA-3>
 
 L<http://www.saphir2.com/sphlib/>
