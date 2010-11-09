@@ -9,6 +9,9 @@ use List::Util qw(max);
 use Digest::BLAKE     ();
 use Digest::BMW       ();
 use Digest::CubeHash  ();
+use Digest::ECHO      ();
+use Digest::Fugue     ();
+use Digest::JH        ();
 use Digest::Keccak    ();
 use Digest::Luffa     ();
 use Digest::MD5       ();
@@ -40,7 +43,19 @@ my %digests = (
     cubehash_256 => sub { Digest::CubeHash::cubehash_256($data) },
     cubehash_384 => sub { Digest::CubeHash::cubehash_384($data) },
     cubehash_512 => sub { Digest::CubeHash::cubehash_512($data) },
+    echo_224     => sub { Digest::ECHO::echo_224($data) },
+    echo_256     => sub { Digest::ECHO::echo_256($data) },
+    echo_384     => sub { Digest::ECHO::echo_384($data) },
+    echo_512     => sub { Digest::ECHO::echo_512($data) },
     keccak_224   => sub { Digest::Keccak::keccak_224($data) },
+    fugue_224    => sub { Digest::Fugue::fugue_224($data) },
+    fugue_256    => sub { Digest::Fugue::fugue_256($data) },
+    fugue_384    => sub { Digest::Fugue::fugue_384($data) },
+    fugue_512    => sub { Digest::Fugue::fugue_512($data) },
+    jh_224       => sub { Digest::JH::jh_224($data) },
+    jh_256       => sub { Digest::JH::jh_256($data) },
+    jh_384       => sub { Digest::JH::jh_384($data) },
+    jh_512       => sub { Digest::JH::jh_512($data) },
     keccak_256   => sub { Digest::Keccak::keccak_256($data) },
     keccak_384   => sub { Digest::Keccak::keccak_384($data) },
     keccak_512   => sub { Digest::Keccak::keccak_512($data) },
@@ -69,7 +84,7 @@ my %digests = (
     skein_256    => sub { Digest::Skein::skein_256($data) },
     skein_512    => sub { Digest::Skein::skein_512($data) },
     skein_1024   => sub { Digest::Skein::skein_1024($data) },
-    whirlpool    => sub { Digest->new('Whirlpool')->add($data)->digest },
+    whirlpool    => sub { Digest::Whirlpool->new->add($data)->digest },
 );
 
 my $times = timethese -1, \%digests, 'none';
