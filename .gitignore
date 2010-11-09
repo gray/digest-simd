@@ -1,0 +1,9 @@
+Digest-SIMD-*
+MANIFEST.bak
+Makefile
+Makefile.old
+SIMD.bs
+SIMD.c
+SIMD.o
+blib/
+pm_to_blib
