@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 19;
+use Test::More tests => 68;
 use Digest::SIMD qw(simd_384 simd_384_hex);
 
 my $len = 0;
@@ -23,15 +23,9 @@ while (my $line = <DATA>) {
             "simd_384: $len bits of $msg"
         );
     }
-    else {
-        TODO:
-        eval {
-            local $TODO = 'add_bits is not yet implemented';
-            my $md = Digest::SIMD->new(384)->add_bits($data, $len)
-                ->hexdigest;
-            is($md, $digest, "new/add_bits/hexdigest: $msg");
-        };
-    }
+
+    my $md = Digest::SIMD->new(384)->add_bits($data, $len)->hexdigest;
+    is($md, $digest, "new/add_bits/hexdigest: $msg");
 }
 continue { $len++ }
 
