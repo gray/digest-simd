@@ -75,8 +75,8 @@ Digest::SIMD - Perl interface to the SIMD digest algorithm
     use Digest::SIMD qw(simd_256 simd_256_hex simd_256_base64);
 
     $digest = simd_256($data);
-    $digest = simd_hex_256($data);
-    $digest = simd_base64_256($data);
+    $digest = simd_256_hex($data);
+    $digest = simd_256_base64($data);
 
     # Object-oriented interface
     use Digest::SIMD;
