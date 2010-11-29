@@ -25,33 +25,6 @@ our @EXPORT_OK = qw(
     simd_512 simd_512_hex simd_512_base64
 );
 
-# TODO: convert to C.
-sub simd_224_hex  { unpack 'H*', simd_224(@_) }
-sub simd_256_hex  { unpack 'H*', simd_256(@_) }
-sub simd_384_hex  { unpack 'H*', simd_384(@_) }
-sub simd_512_hex  { unpack 'H*', simd_512(@_) }
-
-sub simd_224_base64 {
-    my $b64 = MIME::Base64::encode(simd_224(@_), '');
-    $b64 =~ s/=+$//g;
-    return $b64;
-}
-sub simd_256_base64 {
-    my $b64 = MIME::Base64::encode(simd_256(@_), '');
-    $b64 =~ s/=+$//g;
-    return $b64;
-}
-sub simd_384_base64 {
-    my $b64 = MIME::Base64::encode(simd_384(@_), '');
-    $b64 =~ s/=+$//g;
-    return $b64;
-}
-sub simd_512_base64 {
-    my $b64 = MIME::Base64::encode(simd_512(@_), '');
-    $b64 =~ s/=+$//g;
-    return $b64;
-}
-
 sub add_bits {
     my ($self, $data, $bits) = @_;
     if (2 == @_) {
